@@ -41,3 +41,10 @@ class PainEvaluation(StructuredNode):
     )
     value = IntegerProperty()
     day = RelationshipTo('Day', 'DURING', cardinality=One)
+
+    def to_json(self):
+        return {
+            "type": self.type,
+            "value": self.value,
+            "day": self.day
+        }

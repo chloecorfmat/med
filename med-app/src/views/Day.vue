@@ -3,6 +3,7 @@
     <Menu />
     <div class="day">
       <h1>{{ day.date | formatDate('DD MMMM YYYY') }}</h1>
+      <PainEvaluations :date="this.date"/>
     </div>
   </div>
 </template>
@@ -10,12 +11,14 @@
 <script>
 // @ is an alias to /src
 import Menu from '@/components/Menu';
+import PainEvaluations from '@/components/PainEvaluations';
 import axios from "axios";
 
 export default {
   name: 'Day',
   components: {
-    Menu
+    Menu,
+    PainEvaluations
   },
   props: {
     date: String
