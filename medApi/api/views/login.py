@@ -1,13 +1,15 @@
 from django.http import JsonResponse
 from api.models import Person
 from django.core.exceptions import PermissionDenied
-from uuid import uuid4
 from django.views.decorators.csrf import csrf_exempt
+
+import json
 
 @csrf_exempt
 def login(request):
     if request.method == 'POST':
-        content = request.POST
+        data = request.body.decode('UTF-8')
+        content = json.loads(data)
         name = content.get('name')
         password = content.get('password')
 
@@ -15,12 +17,10 @@ def login(request):
             person = Person.nodes.get(name=name)
 
             if person.password == password:
-                token = uuid4()
-                person.token = token
-                person.save()
                 response = {
-                    "token": token,
+                    "token": person.token,
                 }
+
                 return JsonResponse(response)
             else:
                 raise PermissionDenied

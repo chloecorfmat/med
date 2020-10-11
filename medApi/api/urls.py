@@ -5,5 +5,8 @@ from django.urls import path
 urlpatterns = [
     path('person', person),
     path('getAllPersons', getAllPersons),
-    path('login', login)
+    path('login', login),
+    path('day', day),
+    path('day/all', dayAll),
+    path('pain', painEvaluation)
 ]

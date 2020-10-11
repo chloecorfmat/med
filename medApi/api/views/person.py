@@ -43,6 +43,9 @@ def person(request):
 
         try:
             person = Person(name=name, password=password)
+
+            token = uuid4()
+            person.token = token
             person.save()
             response = {
                 "name": person.name,
