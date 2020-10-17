@@ -8,6 +8,7 @@ urlpatterns = [
     path('login', login),
     path('day', day),
     path('day/all', dayAll),
+    path('day/comment', dayComment),
     path('pain', painEvaluation),
     path('pain-value', painEvaluationValue)
 ]

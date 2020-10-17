@@ -39,7 +39,6 @@
         methods: {
             submitPainEvaluation(value) {
                 const component = this
-                console.log(value)
 
                 axios.post('http://localhost:8000/pain', {
                     date: component.date,
@@ -49,8 +48,7 @@
                     headers: {
                         'Authorization': component.$session.get('token')
                     }
-                }).then(function (response) {
-                    console.log(response.data)
+                }).then(function () {
                     component.value = value
                 }).catch(function (e) {
                     component.error = e
